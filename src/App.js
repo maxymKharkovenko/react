@@ -243,52 +243,47 @@ class Article extends React.Component {
 class Details extends React.Component {
   constructor(props, context) {
     super(props, context);
-    this.state = {
-      name: 'max'
-    }
+    this.state = this.props.state;
   }
 
   componentDidMount() {
-    setTimeout((() => this.setState({name: 'test'})), 5000);
+    //setTimeout((() => this.setState({name: 'test'})), 5000);
   }
 
   render() {
-    return <div className='details'>{this.state.name}</div>
+    return <div className='details'>
+      {this.props.data ? (
+        <div>
+          <p>email: <a href={this.props.data.email}>{this.props.data.email}</a></p>
+          <p>phone: {this.props.data.phone}</p>
+          <p>name: {this.props.data.name}</p>
+          <p>company: {this.props.data.company}</p>
+          <p>address: {this.props.data.address}</p>
+        </div>
+      ) : (
+       'no data'
+      )}
+    </div>
+
+
+
   }
 
 }
 class Contacts extends React.Component {
   constructor(props, context) {
     super(props, context);
-    this.state = {
-      list: this.props.data,
-      details: null
-    };
-    this.onUserClick = this.onUserClick.bind(this);
+    this.state = this.props.state;
+    this.onSearch = this.props.options.onSearch;
+    this.onUserClick = this.props.options.onUserClick;
   }
-
-  onUserClick (e) {
-    let index = e.currentTarget.firstElementChild.getAttribute('id');
-    let data = this.props.data[index];
-    console.log(data);
-    this.setState({details: data})
-  }
-  onSearch(e) {
-    let value = e.target.value.toLowerCase();
-    let list = this.props.data.filter(function (el) {
-      let sValue = el.name.toLowerCase();
-      return sValue.indexOf(value) !== -1;
-    });
-    this.setState({list: list})
-  }
-
   render() {
     let data = this.props.data;
     let contactsTemplate;
     let onUserClick = this.onUserClick;
 
     if (data.length > 0) {
-      contactsTemplate = this.state.list.map(function (item, index) {
+      contactsTemplate = data.map(function (item, index) {
         return (
           <div key={index} onClick={onUserClick}>
             <Article data={item} index={index} key={index} onClick={onUserClick}/>
@@ -299,7 +294,6 @@ class Contacts extends React.Component {
       contactsTemplate = <p>no news</p>
     }
 
-
     return (
       <div className='contacts'>
         <div className="contact-search">
@@ -308,7 +302,7 @@ class Contacts extends React.Component {
         <div className="container-list">
           {contactsTemplate}
         </div>
-        <strong className={'news__count ' + (this.state.list.length > 0 ? '' : 'none') }>Total: {this.state.list.length}</strong>
+        <strong className={'news__count ' + (this.props.data.length > 0 ? '' : 'none') }>Total: {this.props.data.length}</strong>
       </div>
     );
   }
@@ -319,25 +313,36 @@ class App extends Component {
   constructor(props, context) {
     super(props, context);
     this.state = {
-      list: [],
-      details: null
+      list: my_news,
+      details: my_news[0]
     };
     this.options = {
-      onUserClick: this.onUserClick.bind(this)
+      onUserClick: this.onUserClick.bind(this),
+      onSearch: this.onSearch.bind(this)
 
     };
   }
   onUserClick(e) {
-    console.log(e);
+    let index = e.currentTarget.firstElementChild.getAttribute('id');
+    let data = this.state.list[index];
+    this.setState({details: data})
+  }
+  onSearch(e) {
+    let value = e.target.value.toLowerCase();
+    let list = my_news.filter(function (el) {
+      let sValue = el.name.toLowerCase();
+      return sValue.indexOf(value) !== -1;
+    });
+    this.setState({list: list})
   }
 
   render() {
 
     return (
       <div className="App">
-        <Contacts data={my_news} options={this.options} state={this.state}/>
+        <Contacts data={this.state.list} options={this.options} state={this.state}/>
 
-        <Details />
+        <Details data={this.state.details} state={this.state}/>
       </div>
     );
   }
