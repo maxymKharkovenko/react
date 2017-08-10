@@ -279,6 +279,12 @@ export default class contactPage extends React.Component {
       let sValue = el.name.toLowerCase();
       return sValue.indexOf(value) !== -1;
     });
+    if(!list.length){
+      this.setState({details: null})
+    }else {
+      this.setState({details: list[0]})
+    }
+
     this.setState({list: list})
   }
 

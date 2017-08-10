@@ -36,7 +36,7 @@ export default class Contacts extends React.Component {
         )
       })
     } else {
-      contactsTemplate = <p>no news</p>
+      contactsTemplate = <p>no contacts by your request</p>
     }
 
     return (
