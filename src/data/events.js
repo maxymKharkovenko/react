@@ -30,8 +30,8 @@ export default [
   },
   {
     'title': 'Conference',
-    'start': new Date(2017, 7, 11),
-    'end': new Date(2017, 7, 13),
+    'start': new Date(2017, 7, 16),
+    'end': new Date(2017, 7, 17),
     desc: 'Big conference for important people'
   },
   {
@@ -53,18 +53,18 @@ export default [
   },
   {
     'title': 'Happy Hour',
-    'start':new Date(2017, 7, 12, 17, 0, 0, 0),
-    'end': new Date(2017, 7, 12, 17, 30, 0, 0),
+    'start':new Date(2017, 7, 16, 17, 0, 0, 0),
+    'end': new Date(2017, 7, 16, 17, 30, 0, 0),
     desc: 'Most important meal of the day'
   },
   {
     'title': 'Dinner',
-    'start':new Date(2017, 7, 12, 20, 0, 0, 0),
-    'end': new Date(2017, 7, 12, 21, 0, 0, 0)
+    'start':new Date(2017, 7, 16, 20, 0, 0, 0),
+    'end': new Date(2017, 7, 16, 21, 0, 0, 0)
   },
   {
     'title': 'Birthday Party',
-    'start':new Date(2017, 7, 13, 7, 0, 0),
-    'end': new Date(2017, 7, 13, 10, 30, 0)
+    'start':new Date(2017, 7, 16, 7, 0, 0),
+    'end': new Date(2017, 7, 16, 10, 30, 0)
   }
 ]
