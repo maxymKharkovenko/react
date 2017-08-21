@@ -4,7 +4,7 @@ import Header from './components/header'
 import contactPage from './pages/contactPage'
 import homePage from './pages/homePage'
 
-import {Router, Route} from 'react-router'
+import {Router, Route, Redirect} from 'react-router'
 import { createBrowserHistory } from 'history';
 const history = createBrowserHistory();
 
@@ -24,6 +24,7 @@ class App extends Component {
           <Route path="/" component={Header}/>
           <Route path="/contacts" component={contactPage}/>
           <Route path="/home" component={homePage}/>
+          <Redirect from="/" to="contacts"/>
         </div>
       </Router>
     );
