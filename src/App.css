@@ -105,3 +105,12 @@ p {
   background: white;
   padding: 15px;
 }
+.geolocation-page{
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  width: 1000px;
+  height: 1000px;
+}

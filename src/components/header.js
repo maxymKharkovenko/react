@@ -21,6 +21,9 @@ export default class Header extends React.Component {
             <li className='nav-item'>
               <Link className='nav-link' to='/contacts'>Contacts</Link>
             </li>
+            <li className='nav-item'>
+              <Link className='nav-link' to='/geo'>Geolocation</Link>
+            </li>
           </ul>
           <form className='form-inline my-2 my-lg-0'>
             <input className='form-control mr-sm-2' type='text' placeholder='Search'/>
