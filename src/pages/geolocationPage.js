@@ -45,10 +45,15 @@ export default class geolocationPage extends React.Component {
     });
   }
 
+  _onClick(obj) {
+    console.log(obj.x, obj.y, obj.lat, obj.lng, obj.event);
+  }
+
   render() {
     return (
       <div className="geolocation-page">
         <GoogleMapReact
+          onClick={this._onClick}
           bootstrapURLKeys={GoogleMapConfig}
           defaultCenter={this.props.center}
           defaultZoom={this.props.zoom} >
