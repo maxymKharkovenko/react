@@ -1,4 +1,4 @@
-Test application for learn react
+Test application for learn react js
 router 4 version
 ```
 my-app/
