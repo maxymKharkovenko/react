@@ -12,13 +12,6 @@ const history = createBrowserHistory();
 class App extends Component {
 
   render() {
-
-    /*const commonHome = (props) => {
-      return (
-        <Contacts data={this.state.list} options={this.options} state={this.state} />
-      );
-    };*/
-
     return (
       <Router history={ history }>
         <div>
